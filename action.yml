@@ -1,0 +1,18 @@
+name: get-last-run-status
+description: Get the status of the last run of a workflow.
+inputs:
+  WORKFLOW_FILENAME:
+    description: "Name of the workflow YAML file, e.g. my-workflow.yml"
+    required: true
+  REPOSITORY:
+    description: "Repository name in the form of owner/repo"
+    default: ${{ github.repository }}
+  TOKEN:
+    description: "Token used for making API calls, default to the automatic token"
+    default: ${{ github.token }}
+  CURRENTLY_RUNNING:
+    description: "Whether the workflow being queried is currently running, i.e. it is the one using this action. Defaults to YES."
+    default: 'YES'
+runs:
+  using: 'node16'
+  main: 'dist/index.js'
